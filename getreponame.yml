@@ -1,0 +1,16 @@
+--- 
+
+- name: Build Pet clinc application
+  hosts: localhost
+  vars_files:
+    - environments/{{env_name}}/group_vars/builddeploy.yml
+  roles:
+   - gitclone
+
+- name: Deploy docker
+  hosts: webserver
+  vars_files:
+    - environments/{{env_name}}/group_vars/builddeploy.yml
+  roles:
+   - docker
+   
